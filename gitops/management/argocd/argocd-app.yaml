@@ -10,7 +10,7 @@ spec:
   project: infra
   sources:
   - repoURL: 'https://argoproj.github.io/argo-helm'
-    targetRevision: 5.29.1
+    targetRevision: 5.46.7
     chart: argo-cd
     helm:
       valueFiles:
