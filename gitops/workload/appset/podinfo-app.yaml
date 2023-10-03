@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: pod-info-workload
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          policy.kyverno.io/synchronize: enable
+  template:
+    metadata:
+      name: '{{name}}-pod-info'
+    spec:
+      project: workload
+      sources:
+      - repoURL: 'https://github.com/joaquinrz/flamingo-lab.git'
+        targetRevision: main
+        path: apps/podinfo
+      destination:
+        server: '{{server}}'
+        namespace: default
+      syncPolicy:
+        automated:
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

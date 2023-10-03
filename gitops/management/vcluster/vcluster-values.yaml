@@ -1,0 +1,6 @@
+syncer:
+  extraArgs:
+  - --tls-san=w2.vcluster.kubelab.pro
+sync:
+  ingresses:
+    enabled: true

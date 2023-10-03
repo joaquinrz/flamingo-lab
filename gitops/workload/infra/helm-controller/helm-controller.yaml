@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-controller-workload
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          policy.kyverno.io/synchronize: enable
+  template:
+    metadata:
+      name: '{{name}}-helm-controller'
+    spec:
+      project: workload
+      sources:
+      - repoURL: 'https://github.com/joaquinrz/flamingo-lab.git'
+        targetRevision: main
+        path: apps/infra/helm-controller
+      destination:
+        server: '{{server}}'
+        namespace: flux-system
+      syncPolicy:
+        automated:
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
