@@ -15,7 +15,7 @@ spec:
   project: infra
   sources:
   - repoURL: 'https://charts.jetstack.io'
-    targetRevision: "v1.11.1"
+    targetRevision: "v1.13.1"
     chart: cert-manager
     helm:
       valueFiles:
