@@ -27,10 +27,6 @@ spec:
             sync:
               ingresses:
                 enabled: true
-            mapServices:
-              fromHost:
-              - from: thanos/thanos-receive
-                to: thanos/thanos-receive
       destination:
         server: '{{url}}'
         namespace: '{{workload-cluster}}'
