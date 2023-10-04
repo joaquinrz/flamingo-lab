@@ -27,7 +27,3 @@ spec:
       interval: 1m
   values:
     replicaCount: 1
-  dependsOn:
-    - name: podinfo
-      namespace: argocd
-      condition: Ready
