@@ -4,7 +4,7 @@ metadata:
   name: helm-controller-workload
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   generators:
   - clusters:
