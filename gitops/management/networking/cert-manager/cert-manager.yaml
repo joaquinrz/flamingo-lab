@@ -35,6 +35,13 @@ spec:
         duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
         factor: 2 # a factor to multiply the base duration after each failed retry
         maxDuration: 10m # the maximum amount of time allowed for the backoff strategy
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      name: cert-manager-webhook
+      jqPathExpressions:
+        - .webhooks[].namespaceSelector.matchExpressions[] | select(.key == "control-plane")
+        - .webhooks[].namespaceSelector.matchExpressions[] | select(.key == "kubernetes.azure.com/managedby")        
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
