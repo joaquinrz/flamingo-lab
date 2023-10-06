@@ -13,9 +13,9 @@ configs:
       name: gitops
       type: git
 server:
-  # image:
-  #   repository: ghcr.io/flux-subsystem-argo/fsa/argocd
-  #   tag: v2.7.14-fl.15-main-79945e4b
+  image:
+    repository: ghcr.io/flux-subsystem-argo/fsa/argocd
+    tag: v2.8.4-fl.21-main-6c72e98c
   ingress:
     enabled: true
     ingressClassName: nginx
