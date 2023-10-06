@@ -19,6 +19,9 @@ spec:
       - cluster: management
         url: https://kubernetes.default.svc
         workload-cluster: prod-eastus1
+      - cluster: management
+        url: https://kubernetes.default.svc
+        workload-cluster: prod-southus1        
   template:
     metadata:
       name: '{{workload-cluster}}'
