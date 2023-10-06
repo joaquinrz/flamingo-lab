@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: infra
   source:
-    path: gitops/workload/clusters/vclusters
+    path: gitops/workload/vclusters
     targetRevision: main
     directory:
       recurse: true
