@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-app-workload
+  name: root-app-workload-prod
   namespace: argocd
 spec:
   destination:
@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: infra
   source:
-    path: gitops/workload/appset
+    path: gitops/workload/appset-prod
     targetRevision: main
     directory:
       recurse: true

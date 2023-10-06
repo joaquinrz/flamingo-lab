@@ -1,32 +1,34 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: pod-info-workload
+  name: imdb
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "6"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   generators:
   - clusters:
       selector:
         matchLabels:
           policy.kyverno.io/synchronize: enable
-          env: "prod"
+          environment: nonprod
   template:
     metadata:
-      name: '{{name}}-pod-info'
+      name: '{{name}}-imdb'
     spec:
       project: workload
       sources:
-      - repoURL: 'https://github.com/joaquinrz/flamingo-lab.git'
-        targetRevision: main
-        path: apps/podinfo
+      - repoURL: 'https://joaquinrz.github.io/capi-gitops/'
+        targetRevision: "0.0.3"
+        chart: imdb
+        helm:
+          values: |
+            prometheusReleaseName: {{name}}-prometheus
       destination:
         server: '{{server}}'
-        namespace: default
+        namespace: imdb
       syncPolicy:
         automated:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-          - FluxSubsystem=false

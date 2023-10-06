@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: workload
+  name: workload-prod
   namespace: argocd
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  description: Workload apps
+  description: Workload apps - Production
   sourceNamespaces:
   - "*"
   clusterResourceWhitelist:
