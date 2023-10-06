@@ -11,7 +11,7 @@ spec:
       selector:
         matchLabels:
           policy.kyverno.io/synchronize: enable
-          environment: nonprod
+          env: nonprod
   template:
     metadata:
       name: '{{name}}-imdb'
