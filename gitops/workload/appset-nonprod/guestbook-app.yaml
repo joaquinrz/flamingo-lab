@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: imdb
+  name: guestbook
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "5"
@@ -14,21 +14,19 @@ spec:
           env: nonprod
   template:
     metadata:
-      name: '{{name}}-imdb'
+      name: '{{name}}-guestbook'
     spec:
       project: workload-nonprod
-      sources:
-      - repoURL: 'https://joaquinrz.github.io/capi-gitops/'
-        targetRevision: "0.0.3"
-        chart: imdb
-        helm:
-          values: |
-            prometheusReleaseName: {{name}}-prometheus
+      source:
+        repoURL: https://github.com/argoproj/argo-cd.git
+        targetRevision: HEAD
+        path: applicationset/examples/list-generator/guestbook/engineering-dev
       destination:
         server: '{{server}}'
-        namespace: imdb
+        namespace: guestbook
       syncPolicy:
         automated:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
+          
