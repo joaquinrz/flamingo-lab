@@ -16,7 +16,7 @@ spec:
     metadata:
       name: '{{name}}-pod-info'
     spec:
-      project: workload
+      project: workload-prod
       sources:
       - repoURL: 'https://github.com/joaquinrz/flamingo-lab.git'
         targetRevision: main

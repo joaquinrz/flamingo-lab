@@ -16,7 +16,7 @@ spec:
     metadata:
       name: '{{name}}-imdb'
     spec:
-      project: workload
+      project: workload-nonprod
       sources:
       - repoURL: 'https://joaquinrz.github.io/capi-gitops/'
         targetRevision: "0.0.3"

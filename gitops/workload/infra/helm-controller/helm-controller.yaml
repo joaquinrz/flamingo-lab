@@ -15,7 +15,7 @@ spec:
     metadata:
       name: '{{name}}-helm-controller'
     spec:
-      project: workload
+      project: workload-infra
       sources:
       - repoURL: 'https://github.com/joaquinrz/flamingo-lab.git'
         targetRevision: main
