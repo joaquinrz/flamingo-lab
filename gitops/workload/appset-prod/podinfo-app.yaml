@@ -11,7 +11,6 @@ spec:
       selector:
         matchLabels:
           policy.kyverno.io/synchronize: enabled
-          env: prod
   template:
     metadata:
       name: '{{name}}-pod-info'
