@@ -34,7 +34,7 @@ spec:
     spec:
       project: workload-nonprod
       source:
-        repoURL: https://gtihub.com/joaquinrdz/cluster-addons-{{values.component}}.git
+        repoURL: https://github.com/joaquinrdz/cluster-addons-{{values.component}}.git
         targetRevision: '{{values.branchOrTag}}'
         path: deploy
       destination:
