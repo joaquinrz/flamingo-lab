@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-addons-nonprod
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  generators:
+    - matrix:
+        generators:
+          - list:
+              elements:
+                - values:
+                    component: k8s-dashboard
+                    branchOrTag: nonprod
+          - clusters:
+              selector:
+                matchExpressions:
+                  - key: '{{values.component}}'
+                    operator: In
+                    values: 
+                    - "true"
+                matchLabels:
+                  policy.kyverno.io/synchronize: enable
+                  env: nonprod
+  template:
+    metadata:
+      name: '{{values.component}}-{{name}}'
+      labels: 
+        component: '{{values.component}}'
+        component-version: '{{values.branchOrTag}}'
+        cluster-id: '{{name}}'
+    spec:
+      project: workload-nonprod
+      source:
+        repoURL: https://gtihub.com/joaquinrdz/cluster-addons-{{values.component}}.git
+        targetRevision: '{{values.branchOrTag}}'
+        path: deploy
+      destination:
+        server: '{{server}}' 
+        namespace: cluster-addons
+      syncPolicy:
+        automated:
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
