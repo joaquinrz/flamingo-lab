@@ -14,6 +14,9 @@ spec:
                 - values:
                     component: k8s-dashboard
                     branchOrTag: main
+                - values:
+                    component: opa
+                    branchOrTag: main
           - clusters:
               selector:
                 matchExpressions:
