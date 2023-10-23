@@ -13,7 +13,7 @@ spec:
               elements:
                 - values:
                     component: k8s-dashboard
-                    branchOrTag: nonprod
+                    branchOrTag: main
           - clusters:
               selector:
                 matchExpressions:
