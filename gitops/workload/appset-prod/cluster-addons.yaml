@@ -36,7 +36,7 @@ spec:
       source:
         repoURL: https://github.com/joaquinrz/cluster-addons-{{values.component}}.git
         targetRevision: '{{values.branchOrTag}}'
-        path: deploy
+        path: deploy/prod
       destination:
         server: '{{server}}' 
         namespace: cluster-addons
