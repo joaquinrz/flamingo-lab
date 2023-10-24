@@ -17,6 +17,9 @@ spec:
                 - values:
                     component: opa
                     branchOrTag: main
+                - values:
+                    component: cert-manager
+                    branchOrTag: main
           - clusters:
               selector:
                 matchExpressions:
