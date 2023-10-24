@@ -51,4 +51,4 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-          - FluxSubsystem=true
+          - FluxSubsystem=false
