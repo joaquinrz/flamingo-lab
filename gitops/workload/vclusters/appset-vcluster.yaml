@@ -15,9 +15,6 @@ spec:
         workload-cluster: nonprod-eastus1
       - cluster: management
         url: https://kubernetes.default.svc
-        workload-cluster: nonprod-westus2       
-      - cluster: management
-        url: https://kubernetes.default.svc
         workload-cluster: prod-westus1
       - cluster: management
         url: https://kubernetes.default.svc
